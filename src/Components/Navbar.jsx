@@ -6,7 +6,7 @@ export default function Navabar(){
         <a href="#" className="logo" >F<span>oo</span>diesHub</a>
         <div className="nav-links">
             <Link to="/">Home</Link>
-            <Link to="reciepe">Recipes</Link>
+            <Link to="recepies">Recepies</Link>
             <Link to="about">Settings</Link>
         </div>
 
