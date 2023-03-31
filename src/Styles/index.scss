@@ -1,0 +1,132 @@
+:root{
+    --background-color: #fff;
+    --background-light: #fff;
+    --shadow-color: rgba(0,0,0,0.2);
+    --primary-color:rgb(225,0,86);
+    --text-color: #0A0A0A;
+    --text-light: #575757;
+    --font-size : 16px;
+    --animation-speed:1;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: var(--font-size);
+    font-family: "Roboto", sans-serif ;
+}
+
+a{
+    text-decoration: none;
+}
+.navabar{
+    height: 55px;
+    box-shadow: 0 3px 6px var(--shadow-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    .logo{
+        font-size: 1.5em;
+        font-weight: bolder;
+        color: var(--primary-color);
+        text-decoration: none;
+        text-shadow: 0 1px 3px var(--shadow-color);
+
+        span{
+            color:var(--text-color)
+        }
+    }
+
+    .nav-links{
+        a{
+            margin-left: 1em;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+
+            &::before{
+                content:'';
+                display: inline-block;
+                height: 3px;
+                width: 100%;
+                border-radius: 3px;
+                background-color:var(--primary-color);
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                transform: scaleX(0); //to hide bottom bar
+                transition: transform calc(var(--animation-speed) * 0.2s) ease-in-out; //to display bootom bar on hour
+            }
+
+            &:hover{
+                &::before{
+                    transform: scaleX(1);
+                }
+            }
+
+            &:active{ //when link is clicked
+                color: var(--primary-color);
+                font-weight: bolder;
+            }
+        }
+    }
+
+    .sidebar-btn{
+        height: 20px;
+        width: 32px;
+        position: relative;
+
+        .bar{
+            border-radius:5px;
+            height: 5px;
+            width: 100%;
+            background-color:var(--text-light);
+            position: absolute;
+
+            &:nth-child(1){
+                top: 0;
+            }
+            &:nth-child(2){
+                top: 50%;
+                transform-origin: right;
+                transform: scaleX(.8);
+                // transform: translate(-10%);
+            }
+            &:nth-child(3){
+                top: 100%;
+                transform-origin: right;
+                transform: scaleX(1.1);
+                // transform: translate(-100%);
+            }
+
+        }
+        &.active{
+            .bar{
+                transform-origin: center;
+                top: 50%;
+                &:nth-child(1){
+                    transform:scale(1) rotate(45deg) translateY(-50%)
+                }
+                &:nth-child(2){
+                    transform: scaleX(-45deg) translateY(-50%)
+                }
+                &:nth-child(3){
+                    transform:scale(1) rotate(-45deg) translateY(-50%)
+                }
+            }
+        }
+    }
+}
+
+.container{  //navbar container 
+    padding-inline: 20vw;
+}
